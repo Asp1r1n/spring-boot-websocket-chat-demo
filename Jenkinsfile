@@ -20,12 +20,12 @@ pipeline {
             steps {
                 sh 'mvn package'
             }
-        }
-        
-        post {
-            always {
-                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-                junit 'reports/**/*.xml'
+            
+            post {
+                always {
+                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                }
+            }
         }
     }
 }
