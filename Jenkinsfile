@@ -18,6 +18,7 @@ pipeline {
         }
         stage('Run') {
             steps {
+                sh 'mvn package'
                 sh '''
                    mvn jar:jar install:install help:evaluate -Dexpression=project.name
                    NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\\[]"`
